@@ -1,0 +1,171 @@
+body {
+    background-color: #242529;
+    color: floralwhite;
+    margin: 0px;
+}
+
+.child {
+    float: left;
+    width: 45vw;
+    height: 95vh;
+    background-color: #3F4146;
+    margin: 1vw;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.scrollBar {
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+  -webkit-border-radius: 6px;
+}
+
+#annote {
+    display: none;
+    position: absolute;
+    background-color: #242529;
+    border: solid;
+    border-width: thin;
+    border-color: #737493;
+}
+
+textarea {
+    background-color: #242529;
+    color:floralwhite;
+    border:none;
+}
+#submitstuff {
+    float:right;
+    background-color:#828282;
+    
+}
+#submitbutton {
+    width: 100%;
+    background-color: #242529;
+    color:floralwhite;
+}
+html {
+    scroll-behavior: smooth;
+}
+#sidebar {
+    float: right;
+    height: 100vh;
+    width: 5vw;
+    background-color: #3F4146;
+}
+#pdf {
+    width: 100%;
+    /* background-color: transparent; */
+    background-color: inherit;
+    border: none;
+
+}
+#sidebarbutton {
+    margin-top: 4%;
+    background-color: #3F4146;
+    border: none;
+    background-image: url(pdf.png);
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    -webkit-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    -ms-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+}
+#pdfurl {
+    position: fixed;
+    right: 50vw;
+    bottom: 50%;
+    width: 25vw;
+    height: 15vh;
+    border: solid;
+    border-color: black;
+    /* border: 1px; */
+    border-width: 1px;
+    display:none;
+}
+#pdfurltitle {
+    background-color: #242529;
+    height: 15%;
+    margin-bottom: 1px;
+    color: floralwhite;
+    text-align: center;
+    float:none;
+    font-size: 2vh;
+}
+#pdfurltext {
+    background-color: #3F4146;
+    height: 84%;
+    width: 97.5%;
+    float:none;
+    color:floralwhite;
+}
+#submiturl {
+    background-color: #242529;
+    height: 15%;
+    margin-bottom: 1px;
+    color: floralwhite;
+    text-align: center;
+    float: none;
+    font-size: 2vh;
+    width: 100%;
+    border: none;
+    border-image: none;
+}
+#sidebardownload {
+    width: 100%;
+    background-color: #3F4146;
+    background-image: url(download.png);
+    border: none;
+    padding-top: 100%;
+    background-size: cover;
+    -webkit-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    -ms-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+}
+#downloadimg {
+    width: 100%;
+    background-color:inherit;
+    
+    background-size: cover;
+}
+#uploaddiv {
+    display: none;
+    background-color: #3F4146;
+}
+#sidebarupload {
+    width: 100%;
+    background-color: #3F4146;
+    background-image: url(upload.png);
+    border: none;
+    padding-top: 100%;
+    background-size: cover;
+    -webkit-transition: background-color 0.2s ease-out;
+    -moz-transition: background-color 0.2s ease-out;
+    -o-transition: background-color 0.2s ease-out;
+    -ms-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+}
+.sidebaroption:hover {
+    background-color: #A2A5AE;
+}
+button#sidebardownload:hover {
+    background-color: #575A63;
+}
+button#sidebarupload:hover {
+    background-color: #575A63;
+}
+button#sidebarbutton:hover {
+    background-color: #575A63;
+}
