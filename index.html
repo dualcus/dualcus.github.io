@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="/deps/build/pdf.js"></script>
     <script src="https://www.w3schools.com/lib/w3color.js"></script>
+    <script data-ad-client="ca-pub-3751631917144296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         function highlightionthing(event) {
             if (window.getSelection() != "") {
@@ -116,7 +117,7 @@
         //console.log(colorsys)
         function colorchange() {
             var hex = w3color(document.getElementById("color").innerText.split(/ |-/gm).join("")).toHexString();
-            document.getElementById("color").style.backgroundColor = hex 
+            document.getElementById("color").style.backgroundColor = hex
             document.getElementById("color").style.color = (w3color(document.getElementById("color").innerText.split(/ |-/gm).join("")).lightness < 0.5 ? "white" : "black");
         }
     </script>
@@ -142,7 +143,7 @@
             <input type="file" id="userupload">
             <button onclick="uploaddata()" id="uploadbutton">upload</button>
         </div>
-        
+
     </div>
     <div class="boxs" onclick="highlightionthing(this)">
         <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"></div>
