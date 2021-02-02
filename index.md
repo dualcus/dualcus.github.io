@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="inspector-stylesheet.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-    <script src="D:\Desktop\projectthign\deps\build\pdf.js"></script>
+    <script src="https://github.com/dualcus/dualcus.github.io/blob/main/deps/build/pdf.js"></script>
     <script src="https://www.w3schools.com/lib/w3color.js"></script>
     <script>
         function highlightionthing(event) {
