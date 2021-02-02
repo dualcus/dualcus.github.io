@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body onmousemove="setpos(event)">
+    <link rel="stylesheet" href="inspector-stylesheet.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="D:\Desktop\projectthign\deps\build\pdf.js"></script>
+    <script src="https://www.w3schools.com/lib/w3color.js"></script>
+    <script>
+        function highlightionthing(event) {
+            if (window.getSelection() != "") {
+                document.getElementById("annote").style.display = "block";
+                colorchange();
+                document.getElementById("selection").innerHTML = window.getSelection().toString();
+                document.getElementById("annote").style.left = document.getElementById("mouselocation").innerHTML.split(" ")[0] + "px";
+                document.getElementById("annote").style.top = `${document.getElementById("mouselocation").innerHTML.split(" ")[1]}px`;
+            }
+            else {
+                document.getElementById("annote").style.display = "none";
+                document.getElementById("pdfurl").style.display = "none";
+                document.getElementById("uploaddiv").style.display = "none";
+                document.getElementById("annotetext").value = "";
+            }
+        }
+        function setpos(event) {
+            document.getElementById("mouselocation").innerHTML = event.clientX + " " + event.clientY;
+        }
+        function copynreplace() {
+            var text = document.getElementById("child").innerHTML;
+            var idt = Math.random()
+            var selection = document.getElementById("selection").innerHTML
+            text = text.split(selection)
+            text.splice(1, 0, `<mark id="${idt}source">${selection}</mark>`);
+            document.getElementById("child").innerHTML = text.join("");
+            document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
+            document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
+            document.getElementById(`${idt}`).style.backgroundColor = document.getElementById("color").innerHTML;
+            document.getElementById("result").append(document.getElementById("annotetext").value);
+            document.getElementById("annote").style.display = "none";
+            document.getElementById("annotetext").value = "";
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        async function normalizeinput(x) {
+            var data = x.clipboardData.getData('Text')
+            document.getElementById("child").innerHTML.split(document.getElementById("child").innerHTML)
+            await sleep(5)
+            document.getElementById("child").innerHTML = data
+        }
+        function hoveroff(x) {
+            document.getElementById(x.id + "source").style.backgroundColor = document.getElementById("color1").innerHTML;
+        }
+        function hoveron(x) {
+            document.getElementById("color1").innerHTML = document.getElementById(x.id + "source").style.backgroundColor;
+            document.getElementById(x.id + "source").style.backgroundColor = "grey";
+        }
+        function scrollto(x) {
+            document.getElementById(x.id + "source").scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+        async function loadpdf(url) {
+            var pdfcontent = [];
+            var loadingTask = pdfjsLib.getDocument("https://cors-anywhere.herokuapp.com/" + url);
+            loadingTask.promise.then(async function (pdf) {
+                console.log(pdf._pdfInfo.numPages)
+                for (var i = 1; i <= pdf._pdfInfo.numPages; i++) {
+                    pdf.getPage(i).then(function (pdfPage) {
+                        pdfPage.getTextContent().then((textContent) => {
+                            var fstring = []
+                            textContent.items.forEach(element => fstring.push(element.str));
+                            pdfcontent.push(fstring.join("\n"))
+                        })
+                    })
+                }
+                await sleep(2000)
+                document.getElementById("child").innerHTML = pdfcontent.join("")
+                document.getElementById("child").style.color = "floralwhite"
+                document.getElementById("pdfurl").style.display = "none";
+            });
+        }
+        function openurl() {
+            document.getElementById("pdfurl").style.display = "inline";
+        }
+        function downloaddata() {
+            var file = [document.getElementById("child").innerHTML]
+            var blob = new Blob(file, { type: "text/html" });
+            var Base64 = { _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=", encode: function (e) { var t = ""; var n, r, i, s, o, u, a; var f = 0; e = Base64._utf8_encode(e); while (f < e.length) { n = e.charCodeAt(f++); r = e.charCodeAt(f++); i = e.charCodeAt(f++); s = n >> 2; o = (n & 3) << 4 | r >> 4; u = (r & 15) << 2 | i >> 6; a = i & 63; if (isNaN(r)) { u = a = 64 } else if (isNaN(i)) { a = 64 } t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr.charAt(u) + this._keyStr.charAt(a) } return t }, decode: function (e) { var t = ""; var n, r, i; var s, o, u, a; var f = 0; e = e.replace(/[^A-Za-z0-9\+\/\=]/g, ""); while (f < e.length) { s = this._keyStr.indexOf(e.charAt(f++)); o = this._keyStr.indexOf(e.charAt(f++)); u = this._keyStr.indexOf(e.charAt(f++)); a = this._keyStr.indexOf(e.charAt(f++)); n = s << 2 | o >> 4; r = (o & 15) << 4 | u >> 2; i = (u & 3) << 6 | a; t = t + String.fromCharCode(n); if (u != 64) { t = t + String.fromCharCode(r) } if (a != 64) { t = t + String.fromCharCode(i) } } t = Base64._utf8_decode(t); return t }, _utf8_encode: function (e) { e = e.replace(/\r\n/g, "\n"); var t = ""; for (var n = 0; n < e.length; n++) { var r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r) } else if (r > 127 && r < 2048) { t += String.fromCharCode(r >> 6 | 192); t += String.fromCharCode(r & 63 | 128) } else { t += String.fromCharCode(r >> 12 | 224); t += String.fromCharCode(r >> 6 & 63 | 128); t += String.fromCharCode(r & 63 | 128) } } return t }, _utf8_decode: function (e) { var t = ""; var n = 0; var r = c1 = c2 = 0; while (n < e.length) { r = e.charCodeAt(n); if (r < 128) { t += String.fromCharCode(r); n++ } else if (r > 191 && r < 224) { c2 = e.charCodeAt(n + 1); t += String.fromCharCode((r & 31) << 6 | c2 & 63); n += 2 } else { c2 = e.charCodeAt(n + 1); c3 = e.charCodeAt(n + 2); t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 & 63); n += 3 } } return t } };
+            var uri = 'data:application/octet-stream;charset=UTF-8;base64,' + Base64.encode(document.getElementById("child").innerHTML + "&superseperator&" + document.getElementById("result").innerHTML);
+            var link = document.createElement('a');
+            link.setAttribute("download", "extract.dualcus");
+            link.setAttribute("href", uri);
+            document.body.appendChild(link);
+            link.click();
+        };
+        function uploadbutton() {
+            document.getElementById("uploaddiv").style.display = "block";
+        }
+        function uploaddata() {
+            var dataarr;
+            var filename = document.getElementById('userupload').files[0].name
+            filename = filename.split(".")
+            console.log(filename)
+            console.log(filename[filename.length - 1])
+            if (filename[filename.length - 1] == "dualcus") {
+                document.getElementById('userupload').files[0].text().then((text) => document.getElementById("child").innerHTML = text.split("&superseperator&")[0])
+                document.getElementById('userupload').files[0].text().then((text) => document.getElementById("result").innerHTML = text.split("&superseperator&")[1])
+            }
+            else {
+                document.getElementById('userupload').files[0].text().then((text) => document.getElementById("child").innerHTML = text)
+            }
+            document.getElementById("uploaddiv").style.display = "none";
+        }
+        //console.log(colorsys)
+        function colorchange() {
+            var hex = w3color(document.getElementById("color").innerText.split(/ |-/gm).join("")).toHexString();
+            document.getElementById("color").style.backgroundColor = hex 
+            document.getElementById("color").style.color = (w3color(document.getElementById("color").innerText.split(/ |-/gm).join("")).lightness < 0.5 ? "white" : "black");
+        }
+    </script>
+    <div id="datadivs">
+        <p style="display:none" id="selection"></p>
+        <p style="display:none" id="mouselocation"></p>
+        <p style="display:none" id="color1"></p>
+    </div>
+    <div id="appearingdivs">
+        <div id="pdfurl" class="appeardiv">
+            <div id="pdfurltitle">Please enter the url for the pdf:</div>
+            <input type="text" id="pdfurltext">
+            <button id="submiturl" onclick="loadpdf(document.getElementById('pdfurltext').value)">Submit</button>
+        </div>
+        <div id="annote" class="appeardiv">
+            <textarea id="annotetext"></textarea>
+            <div id="submitstuff">
+                <div contenteditable="true" id="color" onkeyup="colorchange()">Yellow</div>
+                <button onclick="copynreplace()" id="submitbutton">submit</button>
+            </div>
+        </div>
+        <div id="uploaddiv">
+            <input type="file" id="userupload">
+            <button onclick="uploaddata()" id="uploadbutton">upload</button>
+        </div>
+        
+    </div>
+    <div class="boxs" onclick="highlightionthing(this)">
+        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"></div>
+        <div contenteditable="true" class="child" id="result"></div>
+    </div>
+    <div contenteditable="false" id="sidebar">
+        <button id="sidebarbutton" onclick="openurl()" class="sidebaroption"></button>
+        <button id="sidebardownload" onclick="downloaddata()" class="sidebaroption"></button>
+        <button id="sidebarupload" onclick="uploadbutton()" class="sidebaroption"></button>
+    </div>
+</body>
+</html>
