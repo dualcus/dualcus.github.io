@@ -170,3 +170,28 @@ button#sidebarupload:hover {
 button#sidebarbutton:hover {
     background-color: #575A63;
 }
+#selecttext {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 43%;
+    left: 43%;
+    border: solid;
+    border-radius: 15px;
+    border-color: black;
+    border-width: thin;
+    background-color: #242529;
+}
+}
+#selectiontop {
+    background-color: #242529;
+    height: 10vh;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+#selectionbottom {
+    background-color: #3F4146;
+    height: 20vh;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
