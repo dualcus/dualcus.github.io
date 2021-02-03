@@ -122,6 +122,11 @@
             document.getElementById("color").style.backgroundColor = hex
             document.getElementById("color").style.color = (w3color(document.getElementById("color").innerText.split(/ |-/gm).join("")).lightness < 0.5 ? "white" : "black");
         }
+        async function choosefile() {
+            var file = fetch(`pretexts/${document.getElementById('textselection').value}`)
+            file.then((response) => response.text()).then((text) => document.getElementById("child").innerHTML = text)
+            document.getElementById("selecttext").style.display = "none"
+        }
     </script>
     <div id="datadivs">
         <p style="display:none" id="selection"></p>
@@ -129,6 +134,29 @@
         <p style="display:none" id="color1"></p>
     </div>
     <div id="appearingdivs">
+        <div id="selecttext" style="display: none;">
+            <div id="selectiontop">Select your desired text</div>
+            <div id="selectionbottom">
+                <select name="Text" id="textselection">
+                    <option value="asyoulikeit.txt">As You Like It</option>
+                    <option value="coriolanus.txt">Coriolanus</option>
+                    <option value="hamlet.txt">Hamlet</option>
+                    <option value="juliuscaesar.txt">Julius Caesar</option>
+                    <option value="kinglear.txt">Kinglear</option>
+                    <option value="kingrichard3.txt">King Richard 3</option>
+                    <option value="macbeth.txt">Macbeth</option>
+                    <option value="measureformeasure.txt">Measure For Measure</option>
+                    <option value="merchantofvenice.txt">Merchant Of Venice</option>
+                    <option value="midsummersnightdream.txt">Mid-Summers Night Dream</option>
+                    <option value="othello.txt">Othello</option>
+                    <option value="romeojuliet.txt">Romeo Juliet</option>
+                    <option value="tamingshrew.txt">Taming of the Shrew</option>
+                    <option value="titusandronicus.txt">Titus And Ronicus</option>
+                    <option value="twelfthnight.txt">Twelfth Night</option>
+                </select>
+                <button onclick="choosefile()">Ok!</button>
+            </div>
+        </div>
         <div id="pdfurl" class="appeardiv">
             <div id="pdfurltitle">Please enter the url for the pdf:</div>
             <input type="text" id="pdfurltext">
@@ -148,7 +176,7 @@
 
     </div>
     <div class="boxs" onclick="highlightionthing(this)">
-        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"><button onclick="document.getElementById('child').innerHTML = '';">clear</button> Dualcus is a helpful open-source tool to help you study, just press clear, put what you want to annotate in this box, and select what you want to annotate!</div>
+        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)">Dualcus is a helpful open-source tool to help you study! To start either <button onclick="document.getElementById('child').innerHTML = '';">provide your own text</button> or <button onclick="document.getElementById('selecttext').style.display = 'block'">use one of ours</button></div>
         <div contenteditable="true" class="child" id="result"></div>
     </div>
     <div contenteditable="false" id="sidebar">

@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\deps",
-    "\\deps\\build"
+    "\\deps\\build",
+    "\\pretexts"
   ],
-  "SelectedNode": "\\inspector-stylesheet.css",
+  "SelectedNode": "\\pretexts\\asyoulikeit.txt",
   "PreviewInSolutionExplorer": false
 }
