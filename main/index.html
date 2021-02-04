@@ -17,6 +17,7 @@
     <script src="https://www.w3schools.com/lib/w3color.js"></script>
     <!---<script data-ad-client="ca-pub-3751631917144296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
     <script>
+        var selectdata;
         function highlightionthing(event) {
             if (window.getSelection() != "") {
                 document.getElementById("annote").style.display = "block";
@@ -24,6 +25,7 @@
                 document.getElementById("selection").innerHTML = window.getSelection().toString();
                 document.getElementById("selectionpre").innerHTML = window.getSelection().getRangeAt(0).startContainer.parentNode.innerHTML.substring(window.getSelection().getRangeAt(0).startOffset - 10, window.getSelection().getRangeAt(0).startOffset - 1)
                 document.getElementById("selectionpost").innerHTML = window.getSelection().getRangeAt(0).startContainer.parentNode.innerHTML.substring(window.getSelection().getRangeAt(0).endOffset, window.getSelection().getRangeAt(0).endOffset + 10)
+                selectdata = window.getSelection().getRangeAt(0).startContainer;
                 document.getElementById("annote").style.left = document.getElementById("mouselocation").innerHTML.split(" ")[0] + "px";
                 document.getElementById("annote").style.top = `${document.getElementById("mouselocation").innerHTML.split(" ")[1]}px`;
             }
@@ -38,7 +40,7 @@
             document.getElementById("mouselocation").innerHTML = event.clientX + " " + event.clientY;
         }
         function copynreplace() {
-            var text = document.getElementById("child").innerHTML;
+            var text = selectdata.nodeValue;
             var idt = Math.random()
             var selection = document.getElementById("selection").innerHTML
             text = text.split(selection)
@@ -54,7 +56,7 @@
             text.splice(i+1, 2, text[i] + text[i+1] + text[i+2]);
             text.splice(i, 1);
             console.log(text)
-            document.getElementById("child").innerHTML = text.join(selection);
+            //document.getElementById("child").innerHTML = text.join(selection);
             document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
             document.getElementById(`${idt}`).style.backgroundColor = document.getElementById("color").innerHTML;
