@@ -4,7 +4,7 @@ body {
 }
 #main {
     margin: auto;
-    background-image: url("classroomstockimage.png");
+    background-image: url("/classroomstockimage.png");
     backdrop-filter: brightness(0.5);
     height: 100vh;
 }
