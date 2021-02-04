@@ -23,6 +23,7 @@
                 colorchange();
                 document.getElementById("selection").innerHTML = window.getSelection().toString();
                 document.getElementById("selectionpre").innerHTML = window.getSelection().getRangeAt(0).startContainer.parentNode.innerHTML.substring(window.getSelection().getRangeAt(0).startOffset - 10, window.getSelection().getRangeAt(0).startOffset - 1)
+                document.getElementById("selectionpost").innerHTML = window.getSelection().getRangeAt(0).startContainer.parentNode.innerHTML.substring(window.getSelection().getRangeAt(0).endOffset, window.getSelection().getRangeAt(0).endOffset + 10)
                 document.getElementById("annote").style.left = document.getElementById("mouselocation").innerHTML.split(" ")[0] + "px";
                 document.getElementById("annote").style.top = `${document.getElementById("mouselocation").innerHTML.split(" ")[1]}px`;
             }
@@ -43,7 +44,7 @@
             text = text.split(selection)
             var i = 0
             for (i = 0; i < text.length; i++) {
-                if (text[i].includes(document.getElementById("selectionpre").innerHTML) || document.getElementById("selectionpre").innerHTML.includes(text[i])) {
+                if ((text[i].includes(document.getElementById("selectionpre").innerHTML) || document.getElementById("selectionpre").innerHTML.includes(text[i])) && (text[i + 1].includes(document.getElementById("selectionpost").innerHTML) || document.getElementById("selectionpost").innerHTML.includes(text[i + 1]))) {
                     console.log(true)
                     console.log(i);
                     break;
