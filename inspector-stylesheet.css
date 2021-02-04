@@ -70,7 +70,7 @@ html {
 }
 #sidebarbutton {
     margin-top: 4%;
-    background-color: #3F4146;
+    background-color: inherit;
     border: none;
     background-image: url(pdf.png);
     width: 100%;
@@ -124,7 +124,7 @@ html {
 }
 #sidebardownload {
     width: 100%;
-    background-color: #3F4146;
+    background-color: inherit;
     background-image: url(download.png);
     border: none;
     padding-top: 100%;
@@ -150,7 +150,7 @@ html {
 }
 #sidebarupload {
     width: 100%;
-    background-color: #3F4146;
+    background-color: inherit;
     background-image: url(upload.png);
     border: none;
     padding-top: 100%;
