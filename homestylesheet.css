@@ -1,0 +1,41 @@
+body {
+    font-family: 'Miriam Libre', sans-serif;
+    margin: 0px;   
+}
+#main {
+    margin: auto;
+    background-image: url("classroomstockimage.png");
+    backdrop-filter: brightness(0.5);
+    height: 100vh;
+}
+#logo {
+    width: 25vw;
+    margin: auto;
+    display: block;
+    background-color: transparent;
+}
+.taglinetext {
+    margin: auto;
+    text-align:center;
+    color:white;
+    font-size: 10vh;
+}
+#shadowbox1 {
+    background-color: #3d3d3d;
+    opacity: 0.7;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+#getstartedbox {
+    margin: auto;
+    background-color: #3d3d3d;
+    text-align: center;
+    height: 10vh;
+    width: 30vw;
+    color: white;
+    text-decoration:none;
+    font-size: 7vh;
+    margin-top: 4%;
+}
