@@ -22,6 +22,7 @@
                 document.getElementById("annote").style.display = "block";
                 colorchange();
                 document.getElementById("selection").innerHTML = window.getSelection().toString();
+                document.getElementById("selectionpre").innerHTML = window.getSelection().getRangeAt(0).startContainer.parentNode.innerHTML.substring(window.getSelection().getRangeAt(0).startOffset - 10, window.getSelection().getRangeAt(0).startOffset - 1)
                 document.getElementById("annote").style.left = document.getElementById("mouselocation").innerHTML.split(" ")[0] + "px";
                 document.getElementById("annote").style.top = `${document.getElementById("mouselocation").innerHTML.split(" ")[1]}px`;
             }
@@ -40,8 +41,15 @@
             var idt = Math.random()
             var selection = document.getElementById("selection").innerHTML
             text = text.split(selection)
-            text.splice(1, 0, `<mark id="${idt}source">${selection}</mark>`);
-            document.getElementById("child").innerHTML = text.join("");
+            var i = 0
+            for (i = 0; i < text.length; i++) {
+                if (text[i].includes(document.getElementById("selectionpre").innerHTML)) {
+                    break;
+                }
+            }
+            text.splice(i, 0, `<mark id="${idt}source">${selection}</mark>`);
+            text.splice(i, 2, test[i] + text[i+1]);
+            document.getElementById("child").innerHTML = text.join(selection);
             document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
             document.getElementById(`${idt}`).style.backgroundColor = document.getElementById("color").innerHTML;
@@ -135,6 +143,7 @@
     </script>
     <div id="datadivs">
         <p style="display:none" id="selection"></p>
+        <p style="display:none" id="selectionpre"></p>
         <p style="display:none" id="mouselocation"></p>
         <p style="display:none" id="color1"></p>
         <p style="display:none" id="color"></p>
