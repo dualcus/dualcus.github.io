@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101299710);</script>
+    <script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101299710);</script>
     <script async src="//static.getclicky.com/js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Miriam+Libre&display=swap" rel="stylesheet">
@@ -137,7 +137,6 @@
         <p style="display:none" id="selection"></p>
         <p style="display:none" id="mouselocation"></p>
         <p style="display:none" id="color1"></p>
-        <p style="display:none" id="color"></p>
     </div>
     <div id="appearingdivs">
         <div id="selecttext" style="display: none;">
@@ -168,22 +167,12 @@
             <input type="text" id="pdfurltext">
             <button id="submiturl" onclick="loadpdf(document.getElementById('pdfurltext').value)">Submit</button>
         </div>
-        <div id="annote" class="appeardiv" style="background-color:#4c4c4c;padding:2px">
-            <textarea id="annotetext" style="width:10vw;height:5vw;"></textarea>
-            <div id="annoteline" style="height:1px;width:100%;background-color:white;margin:auto"></div>
-            <div id="annoteoptions" style="height:5vh;">
-                <div style="background-image:url('delete.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left; margin:1px;"></div>
-                <div id="optionsline" style="background-color:white;height:100%;width:1px;float: left;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'red';copynreplace()" style="background-image:url('red.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'lime';copynreplace()" style="background-image:url('green.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'blue';copynreplace()" style="background-image:url('blue.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'purple';copynreplace()" style="background-image:url('purple.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'yellow';copynreplace()" style="background-image:url('yellow.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
+        <div id="annote" class="appeardiv">
+            <textarea id="annotetext"></textarea>
+            <div id="submitstuff">
+                <div contenteditable="true" id="color" onkeyup="colorchange()">Yellow</div>
+                <button onclick="copynreplace()" id="submitbutton">submit</button>
             </div>
-            <!--<div id="submitstuff">
-        <div contenteditable="true" id="color" onkeyup="colorchange()">Yellow</div>
-        <button onclick="copynreplace()" id="submitbutton">submit</button>
-    </div>-->
         </div>
         <div id="uploaddiv">
             <input type="file" id="userupload">
