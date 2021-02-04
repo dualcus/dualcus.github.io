@@ -43,7 +43,7 @@
             text = text.split(selection)
             var i = 0
             for (i = 0; i < text.length; i++) {
-                if (text[i].includes(document.getElementById("selectionpre").innerHTML)) {
+                if (text[i].includes(document.getElementById("selectionpre").innerHTML) || document.getElementById("selectionpre").innerHTML.includes(text[i])) {
                     console.log(true)
                     console.log(i);
                     break;
