@@ -1,5 +1,5 @@
 body {
-    background-color: #242529;
+    background-color: #727272;
     color: floralwhite;
     margin: 0px;
 }
@@ -8,7 +8,7 @@ body {
     float: left;
     width: 45vw;
     height: 95vh;
-    background-color: #3F4146;
+    background-color: #242424;
     margin: 1vw;
     overflow-x: auto;
     white-space: pre-wrap;
@@ -56,10 +56,10 @@ html {
 }
 #sidebar {
     position: fixed;
-    right:0px;
+    right: 0px;
     height: 100vh;
     width: 5vw;
-    background-color: #3F4146;
+    background-color: #242424;
 }
 #pdf {
     width: 100%;
