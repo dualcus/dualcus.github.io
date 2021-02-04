@@ -128,7 +128,7 @@
             document.getElementById("color").style.color = (w3color(document.getElementById("color").innerText.split(/ |-/gm).join("")).lightness < 0.5 ? "white" : "black");
         }
         async function choosefile() {
-            var file = fetch(`pretexts/${document.getElementById('textselection').value}`)
+            var file = fetch(`/pretexts/${document.getElementById('textselection').value}`)
             file.then((response) => response.text()).then((text) => document.getElementById("child").innerHTML = text)
             document.getElementById("selecttext").style.display = "none"
         }
