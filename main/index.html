@@ -48,7 +48,7 @@
                 }
             }
             text.splice(i, 0, `<mark id="${idt}source">${selection}</mark>`);
-            text.splice(i, 2, test[i] + text[i+1]);
+            text.splice(i, 2, text[i] + text[i+1]);
             document.getElementById("child").innerHTML = text.join(selection);
             document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
