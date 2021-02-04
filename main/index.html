@@ -54,7 +54,7 @@
             var data = x.clipboardData.getData('Text')
             document.getElementById("child").innerHTML.split(document.getElementById("child").innerHTML)
             await sleep(5)
-            document.getElementById("child").innerHTML = data
+            document.getElementById("child").append(data)
         }
         function hoveroff(x) {
             document.getElementById(x.id + "source").style.backgroundColor = document.getElementById("color1").innerHTML;
