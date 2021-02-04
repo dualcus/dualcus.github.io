@@ -7,6 +7,7 @@ body {
     background-image: url("/classroomstockimage.png");
     backdrop-filter: brightness(0.5);
     height: 100vh;
+    background-size: cover;
 }
 #logo {
     width: 25vw;
