@@ -55,6 +55,7 @@
             document.getElementById("child").innerHTML.split(document.getElementById("child").innerHTML)
             await sleep(5)
             document.getElementById("child").append(data)
+            document.execCommand('undo', false, null)
         }
         function hoveroff(x) {
             document.getElementById(x.id + "source").style.backgroundColor = document.getElementById("color1").innerHTML;
