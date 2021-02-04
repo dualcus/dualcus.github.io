@@ -43,8 +43,8 @@
             var dtext = document.getElementById("child").innerHTML;
             var text = selectdata.nodeValue.valueOf();
             dtext = dtext.split(text);
-            dtext = dtext.splice(1, 0, text);
-
+            dtext.splice(1, 0, text);
+            console.log(dtext);
             var idt = Math.random()
             var selection = document.getElementById("selection").innerHTML
             dtext[1] = dtext[1].split(selection)
