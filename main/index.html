@@ -42,8 +42,8 @@
         function copynreplace() {
             var dtext = document.getElementById("child").innerHTML;
             var text = selectdata.nodeValue.valueOf();
-            dtext.split(text);
-            dtext.splice(1, 0, text);
+            dtext = dtext.split(text);
+            dtext = dtext.splice(1, 0, text);
 
             var idt = Math.random()
             var selection = document.getElementById("selection").innerHTML
