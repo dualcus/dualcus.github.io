@@ -41,7 +41,7 @@
         }
         function copynreplace() {
             var dtext = document.getElementById("child").innerHTML;
-            var text = selectdata.nodeValue.valueOf();
+            var text = selectdata.nodeValue;
             console.log(dtext.includes(text))
             dtext = dtext.split(text);
             dtext.splice(1, 0, text);
