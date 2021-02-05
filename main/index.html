@@ -24,7 +24,7 @@
                 colorchange();
                 document.getElementById("selection").innerHTML = window.getSelection().toString();
                 document.getElementById("selectionpre").innerHTML = window.getSelection().getRangeAt(0).startContainer.nodeValue.substring(window.getSelection().getRangeAt(0).startOffset - 10, window.getSelection().getRangeAt(0).startOffset - 1)
-                document.getElementById("selectionpost").innerHTML = window.getSelection().getRangeAt(0).startContainer.nodeValue.innerHTML.substring(window.getSelection().getRangeAt(0).endOffset, window.getSelection().getRangeAt(0).endOffset + 10)
+                document.getElementById("selectionpost").innerHTML = window.getSelection().getRangeAt(0).startContainer.nodeValue.substring(window.getSelection().getRangeAt(0).endOffset, window.getSelection().getRangeAt(0).endOffset + 10)
                 selectdata = window.getSelection().getRangeAt(0).startContainer;
                 document.getElementById("annote").style.left = document.getElementById("mouselocation").innerHTML.split(" ")[0] + "px";
                 document.getElementById("annote").style.top = `${document.getElementById("mouselocation").innerHTML.split(" ")[1]}px`;
