@@ -59,7 +59,7 @@
             }
             dtext.splice(i+1, 0, `<mark id="${idt}source" style="background-color:${document.getElementById("color").innerHTML}">${selection}</mark>`);
             dtext.splice(i+1, 2, dtext[i] + dtext[i+1] + dtext[i+2]);
-            dtext0.splice(i, 1);
+            dtext.splice(i, 1);
             console.log(dtext)
             console.log(dtext.join(selection))
             dtext = dtext.join(selection)
