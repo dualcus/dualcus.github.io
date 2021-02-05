@@ -16,11 +16,81 @@
     <script src="/deps/build/pdf.js"></script>
     <script src="https://www.w3schools.com/lib/w3color.js"></script>
     <!---<script data-ad-client="ca-pub-3751631917144296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+
+    <div id="datadivs">
+        <p style="display:none" id="selection"></p>
+        <p style="display:none" id="selectionpre"></p>
+        <p style="display:none" id="selectionpost"></p>
+        <p style="display:none" id="mouselocation"></p>
+        <p style="display:none" id="color1"></p>
+        <p style="display:none" id="color"></p>
+    </div>
+    <div id="appearingdivs">
+        <div id="selecttext" style="display: none;">
+            <div id="selectiontop">Select your desired text</div>
+            <div id="selectionbottom">
+                <select name="Text" id="textselection">
+                    <option value="asyoulikeit.txt">As You Like It</option>
+                    <option value="coriolanus.txt">Coriolanus</option>
+                    <option value="hamlet.txt">Hamlet</option>
+                    <option value="juliuscaesar.txt">Julius Caesar</option>
+                    <option value="kinglear.txt">Kinglear</option>
+                    <option value="kingrichard3.txt">King Richard 3</option>
+                    <option value="macbeth.txt">Macbeth</option>
+                    <option value="measureformeasure.txt">Measure For Measure</option>
+                    <option value="merchantofvenice.txt">Merchant Of Venice</option>
+                    <option value="midsummersnightdream.txt">Mid-Summers Night Dream</option>
+                    <option value="othello.txt">Othello</option>
+                    <option value="romeojuliet.txt">Romeo Juliet</option>
+                    <option value="tamingshrew.txt">Taming of the Shrew</option>
+                    <option value="titusandronicus.txt">Titus And Ronicus</option>
+                    <option value="twelfthnight.txt">Twelfth Night</option>
+                </select>
+                <button onclick="choosefile()">Ok!</button>
+            </div>
+        </div>
+        <div id="pdfurl" class="appeardiv">
+            <div id="pdfurltitle">Please enter the url for the pdf:</div>
+            <input type="text" id="pdfurltext">
+            <button id="submiturl" onclick="loadpdf(document.getElementById('pdfurltext').value)">Submit</button>
+        </div>
+        <div id="annote" class="appeardiv" style="background-color:#4c4c4c;padding:2px">
+            <textarea id="annotetext" style="width:10vw;height:5vw;"></textarea>
+            <div id="annoteline" style="height:1px;width:100%;background-color:white;margin:auto"></div>
+            <div id="annoteoptions" style="height:1.5vw;">
+                <div style="background-image:url('/delete.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left; margin:1px;"></div>
+                <div id="optionsline" style="background-color:white;height:100%;width:1px;float: left;"></div>
+                <div onclick="document.getElementById('color').innerHTML = 'red';copynreplace()" style="background-image:url('/red.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
+                <div onclick="document.getElementById('color').innerHTML = 'lime';copynreplace()" style="background-image:url('/green.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
+                <div onclick="document.getElementById('color').innerHTML = 'blue';copynreplace()" style="background-image:url('/blue.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
+                <div onclick="document.getElementById('color').innerHTML = 'purple';copynreplace()" style="background-image:url('/purple.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
+                <div onclick="document.getElementById('color').innerHTML = 'yellow';copynreplace()" style="background-image:url('/yellow.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
+            </div>
+            <!--<div id="submitstuff">
+                <div contenteditable="true" id="color" onkeyup="colorchange()">Yellow</div>
+                <button onclick="copynreplace()" id="submitbutton">submit</button>
+            </div>-->
+        </div>
+        <div id="uploaddiv">
+            <input type="file" id="userupload">
+            <button onclick="uploaddata()" id="uploadbutton">upload</button>
+        </div>
+
+    </div>
+    <div class="boxs" onclick="highlightionthing(this)">
+        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"><div contenteditable="false"> Dualcus is a helpful open-source tool to help you study! To start either <button onclick="document.getElementById('child').innerHTML = '';">provide your own text</button> or <button onclick="document.getElementById('selecttext').style.display = 'block'">use one of ours</button></div></div>
+        <div contenteditable="true" class="child" id="result"></div>
+    </div>
+    <div contenteditable="false" id="sidebar">
+        <button id="sidebarbutton" onclick="openurl()" class="sidebaroption"></button>
+        <button id="sidebardownload" onclick="downloaddata()" class="sidebaroption"></button>
+        <button id="sidebarupload" onclick="uploadbutton()" class="sidebaroption"></button>
+    </div>
     <script>
         document.getElementById("child").setSelectionRange(0, 1)
         highlightionthing();
         copynreplace();
-        document.getElementById("child").setSelectionRange(0,0)
+        document.getElementById("child").setSelectionRange(0, 0)
         var selectdata;
         function highlightionthing(event) {
             if (window.getSelection() != "") {
@@ -61,8 +131,8 @@
                     break;
                 }
             }
-            dtext.splice(i+1, 0, `<mark id="${idt}source" style="background-color:${document.getElementById("color").innerHTML}">${selection}</mark>`);
-            dtext.splice(i+1, 2, dtext[i] + dtext[i+1] + dtext[i+2]);
+            dtext.splice(i + 1, 0, `<mark id="${idt}source" style="background-color:${document.getElementById("color").innerHTML}">${selection}</mark>`);
+            dtext.splice(i + 1, 2, dtext[i] + dtext[i + 1] + dtext[i + 2]);
             dtext.splice(i, 1);
             console.log(dtext)
             console.log(dtext.join(selection))
@@ -74,7 +144,7 @@
             console.log(dtext)
             if (lengthof == 2) document.getElementById("child").innerHTML = dtext;
             else {
-                
+
                 document.getElementById("child").innerHTML = dtext;
             }
             // ( ? dtext[1]:dtext);
@@ -169,74 +239,5 @@
             document.getElementById("selecttext").style.display = "none"
         }
     </script>
-    <div id="datadivs">
-        <p style="display:none" id="selection"></p>
-        <p style="display:none" id="selectionpre"></p>
-        <p style="display:none" id="selectionpost"></p>
-        <p style="display:none" id="mouselocation"></p>
-        <p style="display:none" id="color1"></p>
-        <p style="display:none" id="color"></p>
-    </div>
-    <div id="appearingdivs">
-        <div id="selecttext" style="display: none;">
-            <div id="selectiontop">Select your desired text</div>
-            <div id="selectionbottom">
-                <select name="Text" id="textselection">
-                    <option value="asyoulikeit.txt">As You Like It</option>
-                    <option value="coriolanus.txt">Coriolanus</option>
-                    <option value="hamlet.txt">Hamlet</option>
-                    <option value="juliuscaesar.txt">Julius Caesar</option>
-                    <option value="kinglear.txt">Kinglear</option>
-                    <option value="kingrichard3.txt">King Richard 3</option>
-                    <option value="macbeth.txt">Macbeth</option>
-                    <option value="measureformeasure.txt">Measure For Measure</option>
-                    <option value="merchantofvenice.txt">Merchant Of Venice</option>
-                    <option value="midsummersnightdream.txt">Mid-Summers Night Dream</option>
-                    <option value="othello.txt">Othello</option>
-                    <option value="romeojuliet.txt">Romeo Juliet</option>
-                    <option value="tamingshrew.txt">Taming of the Shrew</option>
-                    <option value="titusandronicus.txt">Titus And Ronicus</option>
-                    <option value="twelfthnight.txt">Twelfth Night</option>
-                </select>
-                <button onclick="choosefile()">Ok!</button>
-            </div>
-        </div>
-        <div id="pdfurl" class="appeardiv">
-            <div id="pdfurltitle">Please enter the url for the pdf:</div>
-            <input type="text" id="pdfurltext">
-            <button id="submiturl" onclick="loadpdf(document.getElementById('pdfurltext').value)">Submit</button>
-        </div>
-        <div id="annote" class="appeardiv" style="background-color:#4c4c4c;padding:2px">
-            <textarea id="annotetext" style="width:10vw;height:5vw;"></textarea>
-            <div id="annoteline" style="height:1px;width:100%;background-color:white;margin:auto"></div>
-            <div id="annoteoptions" style="height:1.5vw;">
-                <div style="background-image:url('/delete.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left; margin:1px;"></div>
-                <div id="optionsline" style="background-color:white;height:100%;width:1px;float: left;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'red';copynreplace()" style="background-image:url('/red.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'lime';copynreplace()" style="background-image:url('/green.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'blue';copynreplace()" style="background-image:url('/blue.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'purple';copynreplace()" style="background-image:url('/purple.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-                <div onclick="document.getElementById('color').innerHTML = 'yellow';copynreplace()" style="background-image:url('/yellow.png');height:100%;background-size:contain;background-repeat:no-repeat;width: 13%;float: left;margin:1px;"></div>
-            </div>
-            <!--<div id="submitstuff">
-        <div contenteditable="true" id="color" onkeyup="colorchange()">Yellow</div>
-        <button onclick="copynreplace()" id="submitbutton">submit</button>
-    </div>-->
-        </div>
-        <div id="uploaddiv">
-            <input type="file" id="userupload">
-            <button onclick="uploaddata()" id="uploadbutton">upload</button>
-        </div>
-
-    </div>
-    <div class="boxs" onclick="highlightionthing(this)">
-        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"><div contenteditable="false"> Dualcus is a helpful open-source tool to help you study! To start either <button onclick="document.getElementById('child').innerHTML = '';">provide your own text</button> or <button onclick="document.getElementById('selecttext').style.display = 'block'">use one of ours</button></div></div>
-        <div contenteditable="true" class="child" id="result"></div>
-    </div>
-    <div contenteditable="false" id="sidebar">
-        <button id="sidebarbutton" onclick="openurl()" class="sidebaroption"></button>
-        <button id="sidebardownload" onclick="downloaddata()" class="sidebaroption"></button>
-        <button id="sidebarupload" onclick="uploadbutton()" class="sidebaroption"></button>
-    </div>
 </body>
 </html>
