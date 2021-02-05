@@ -61,10 +61,10 @@
             dtext[1].splice(i, 1);
             console.log(dtext)
             console.log(dtext[1].join(selection))
-            //dtext[1] = dtext[1].join(selection)
+            dtext[1] = dtext[1].join(selection)
             //dtext[1] = dtext[1].join(selection)
             console.log(dtext.join(""))
-            document.getElementById("child").innerHTML = dtext[1].join(selection);
+            document.getElementById("child").innerHTML = dtext.join("");
             document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
             document.getElementById(`${idt}`).style.backgroundColor = document.getElementById("color").innerHTML;
