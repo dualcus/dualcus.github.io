@@ -59,9 +59,9 @@
             dtext[1].splice(i+1, 0, `<mark id="${idt}source">${selection}</mark>`);
             dtext[1].splice(i+1, 2, dtext[1][i] + dtext[1][i+1] + dtext[1][i+2]);
             dtext[1].splice(i, 1);
-            console.log(dtext[1])
-            dtext[1] = dtext[1].join(selection)
-            document.getElementById("child").innerHTML = dtext.join("");
+            console.log(dtext[1].join(selection))
+            //dtext[1] = dtext[1].join(selection)
+            document.getElementById("child").innerHTML = dtext[1].join(selection);
             document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
             document.getElementById(`${idt}`).style.backgroundColor = document.getElementById("color").innerHTML;
