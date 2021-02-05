@@ -221,7 +221,7 @@
             
                     var html = `<mark style="background-color:${document.getElementById('color')};">` + range + `</mark>`
                     range.deleteContents();
-            
+                    console.log(range);
                     var el = document.createElement("div");
                     el.innerHTML = html;
                     var frag = document.createDocumentFragment(), node, lastNode;
