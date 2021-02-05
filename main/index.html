@@ -67,7 +67,9 @@
             var lengthof = dtext.length;
             dtext = dtext.join("")
             console.log(dtext)
-            document.getElementById("child").innerHTML = (lengthof == 2 ? dtext[1]:dtext);
+            if (lengthof == 2) document.getElementById("child").innerHTML = dtext[1];
+            else document.getElementById("child").innerHTML = dtext;
+            // ( ? dtext[1]:dtext);
             //document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
             document.getElementById(`${idt}`).style.backgroundColor = document.getElementById("color").innerHTML;
