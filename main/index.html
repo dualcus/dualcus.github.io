@@ -120,7 +120,7 @@
             
             var idt = Math.random()
             var selection = document.getElementById("selection").innerHTML
-            
+            getSelectionHtml();
             // ( ? dtext[1]:dtext);
             //document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
             document.getElementById("result").innerHTML = document.getElementById("result").innerHTML + `<br><mark id="${idt}" onmouseover="hoveron(this)" onmouseout="hoveroff(this)" onclick="scrollto(this)">${document.getElementById("selection").innerHTML}<br></mark>&#9;`;
