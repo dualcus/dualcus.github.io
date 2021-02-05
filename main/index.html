@@ -95,7 +95,7 @@
         //document.getElementById("child").setSelectionRange(0,0)
         var selectdata;
         function highlightionthing(event) {
-            if (window.getSelection() != "") {
+            if (window.getSelection() != "" && document.activeElement.id == "child") {
                 document.getElementById("annote").style.display = "block";
                 colorchange();
                 document.getElementById("selection").innerHTML = window.getSelection().toString();
