@@ -17,7 +17,10 @@
     <script src="https://www.w3schools.com/lib/w3color.js"></script>
     <!---<script data-ad-client="ca-pub-3751631917144296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
     <script>
+        document.getElementById("child").setSelectionRange(0, 1)
+        highlightionthing();
         copynreplace();
+        document.getElementById("child").setSelectionRange(0,0)
         var selectdata;
         function highlightionthing(event) {
             if (window.getSelection() != "") {
@@ -227,7 +230,7 @@
 
     </div>
     <div class="boxs" onclick="highlightionthing(this)">
-        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"><div contenteditable="false">Dualcus is a helpful open-source tool to help you study! To start either <button onclick="document.getElementById('child').innerHTML = '';">provide your own text</button> or <button onclick="document.getElementById('selecttext').style.display = 'block'">use one of ours</button></div></div>
+        <div contenteditable="true" class="child" id="child" onclick="highlightionthing(event)" onpaste="normalizeinput(event)"><div contenteditable="false"> Dualcus is a helpful open-source tool to help you study! To start either <button onclick="document.getElementById('child').innerHTML = '';">provide your own text</button> or <button onclick="document.getElementById('selecttext').style.display = 'block'">use one of ours</button></div></div>
         <div contenteditable="true" class="child" id="result"></div>
     </div>
     <div contenteditable="false" id="sidebar">
