@@ -217,7 +217,7 @@
             if (window.getSelection) {
                 sel = selectdata;
                 if (sel.getRangeAt && sel.rangeCount) {
-                    range = window.getSelection().getRangeAt(0);
+                    range = selectdata.getRangeAt(0);
             
                     var html = `<mark style="background-color:${document.getElementById('color')};">` + range + `</mark>`
                     range.deleteContents();
