@@ -16,15 +16,16 @@
     <script src="/deps/build/pdf.js"></script>
     <script src="https://www.w3schools.com/lib/w3color.js"></script>
     <!---<script data-ad-client="ca-pub-3751631917144296" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
-
     <div id="datadivs">
-        <p style="display:none" id="selection"></p>
-        <p style="display:none" id="selectionpre"></p>
-        <p style="display:none" id="selectionpost"></p>
-        <p style="display:none" id="mouselocation"></p>
-        <p style="display:none" id="color1"></p>
-        <p style="display:none" id="color"></p>
+        <p style="display:none" id="selection"> </p>
+        <p style="display:none" id="selectionpre"> </p>
+        <p style="display:none" id="selectionpost"> </p>
+        <p style="display:none" id="mouselocation"> </p>
+        <p style="display:none" id="color1"> </p>
+        <p style="display:none" id="color">transparent</p>
     </div>
+
+
     <div id="appearingdivs">
         <div id="selecttext" style="display: none;">
             <div id="selectiontop">Select your desired text</div>
@@ -87,10 +88,10 @@
         <button id="sidebarupload" onclick="uploadbutton()" class="sidebaroption"></button>
     </div>
     <script>
-        document.getElementById("child").setSelectionRange(0, 1)
+        //document.getElementById("child").setSelectionRange(0, 1)
         highlightionthing();
         copynreplace();
-        document.getElementById("child").setSelectionRange(0, 0)
+        //document.getElementById("child").setSelectionRange(0,0)
         var selectdata;
         function highlightionthing(event) {
             if (window.getSelection() != "") {
