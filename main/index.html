@@ -91,7 +91,7 @@
         //document.getElementById("child").setSelectionRange(0, 1)
         highlightionthing();
         copynreplace();
-        document.getElementById("child").split(/undefined/gm).join("")
+        document.getElementById("child").innerHTML = document.getElementById("child").innerHTML.split(/undefined/gm).join("")
         //document.getElementById("child").setSelectionRange(0,0)
         var selectdata;
         function highlightionthing(event) {
