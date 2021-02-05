@@ -64,7 +64,7 @@
             dtext[1] = dtext[1].join(selection)
             //dtext[1] = dtext[1].join(selection)
             console.log(dtext)
-            dtext = dtext.join("").split(/this/gm).join("\\this").split(/<|>/gm).join("")
+            dtext = dtext.join("")
             console.log(dtext)
             document.getElementById("child").innerHTML = dtext;
             //document.getElementById(`${idt}source`).style.backgroundColor = document.getElementById("color").innerHTML;
